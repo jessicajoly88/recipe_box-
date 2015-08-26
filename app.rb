@@ -10,3 +10,8 @@ get '/recipes' do
 	Recipe.all()
 	erb(:recipes)
 end
+
+post '/recipes' do
+	@recipe = Recipe.create({ name: params['name'] })
+	redirect '/recipes'
+end

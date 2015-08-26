@@ -1,12 +1,17 @@
+
+<div class="container">
 <% if Recipe.any? %>
   <% Recipe.all.each() do |recipe| %>
     <ul>
       <li>
-        <%=recipe.name %>
+        <%= recipe.name %>
       </li>
     </ul>
   <% end %>
 
   <% else %>
-    <p> There are no recipes yet </p>
+    <h1>There are no recipes yet! </h1>
   <% end %>
+
+  <button class= "btn btn-default"><a href="/">Back</a></button>
+</div>
