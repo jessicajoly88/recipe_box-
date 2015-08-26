@@ -1,0 +1,12 @@
+<% if Recipe.any? %>
+  <% Recipe.all.each() do |recipe| %>
+    <ul>
+      <li>
+        <%=recipe.name %>
+      </li>
+    </ul>
+  <% end %>
+
+  <% else %>
+    <p> There are no recipes yet </p>
+  <% end %>
