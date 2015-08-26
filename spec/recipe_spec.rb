@@ -15,4 +15,8 @@ describe(Recipe) do
       expect(test_recipe.categories()).to(eq([test_category]))
     end
   end
+  it 'capitalizes the recipe name' do
+    test_recipe = Recipe.create({:name => 'burrito', :instruction => 'Microwave it'})
+    expect(test_recipe.name()).to(eq("Burrito"))
+  end
 end
