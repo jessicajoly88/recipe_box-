@@ -15,10 +15,17 @@ describe 'create recipe path', {type: :feature} do
   end
 
   it 'allows user to view a specific recipe and its details ' do
-    @recipe = Recipe.create({name: 'Burrito'})
+    recipe = Recipe.create({name: 'Burrito'})
     visit '/recipes'
     click_link 'Burrito'
     expect(page).to have_content 'Burrito'
+  end
+
+  it 'allows a user to delete a recipe' do
+    recipe = Recipe.create({name: 'Burrito'})
+    visit '/recipes'
+    click_link 'x'
+    expect(page).not_to have_content 'Burrito'
   end
 
 end

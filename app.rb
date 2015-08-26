@@ -20,3 +20,9 @@ get '/recipe/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
 	erb(:recipe)
 end
+
+get '/delete/:id' do
+	@recipe = Recipe.find(params['id'].to_i())
+	@recipe.destroy()
+	redirect '/recipes'
+end
