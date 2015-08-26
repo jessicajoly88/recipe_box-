@@ -8,6 +8,7 @@ describe(Recipe) do
       expect(test_recipe.ingredients()).to(eq([test_ingredient1]))
     end
   end
+
   describe('#categories') do
     it 'shows all the categories that the recipe belongs to' do
       test_recipe = Recipe.create({:name => 'Burrito', :instruction => 'Microwave it'})
@@ -15,8 +16,18 @@ describe(Recipe) do
       expect(test_recipe.categories()).to(eq([test_category]))
     end
   end
-  it 'capitalizes the recipe name' do
-    test_recipe = Recipe.create({:name => 'burrito', :instruction => 'Microwave it'})
-    expect(test_recipe.name()).to(eq("Burrito"))
+
+  describe('#capitalize') do
+    it 'capitalizes the recipe name' do
+      test_recipe = Recipe.create({:name => 'burrito', :instruction => 'Microwave it'})
+      expect(test_recipe.name()).to(eq("Burrito"))
+    end
+  end
+
+  describe('#validates') do
+    it 'validates presence of name in name field' do
+      test_recipe = Recipe.create({:name => nil, :instruction => 'Microwave it'})
+      expect(test_recipe.name()).to(eq(nil))
+    end
   end
 end
