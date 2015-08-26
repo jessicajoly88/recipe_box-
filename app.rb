@@ -21,6 +21,13 @@ get '/recipe/:id' do
 	erb(:recipe)
 end
 
+patch '/recipe/:id' do #NOT WORKING!!!!!!
+	@recipe = Recipe.create({ name: params['name'] })
+	@recipe = Recipe.find(params['id'].to_i())
+	@recipe.update({name: params['name']})
+	redirect '/recipe/#{@recipe.id}'
+end
+
 get '/delete/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.destroy()

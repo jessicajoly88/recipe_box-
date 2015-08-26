@@ -28,4 +28,12 @@ describe 'create recipe path', {type: :feature} do
     expect(page).not_to have_content 'Burrito'
   end
 
+  it 'allows a user to update a recipe'do
+    recipe = Recipe.create({name: 'Burrito'})
+    visit '/recipe/#{recipe.id}'
+    fill_in 'update_recipe', with:"Enchiladas"
+    click_button 'Update'
+    expect(page).to have_content 'Enchiladas'
+  end
+  
 end
