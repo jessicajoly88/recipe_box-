@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826172835) do
+ActiveRecord::Schema.define(version: 20150826183848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,22 @@ ActiveRecord::Schema.define(version: 20150826172835) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_recipes", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredients_recipes", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,20 +45,6 @@ ActiveRecord::Schema.define(version: 20150826172835) do
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.string   "instruction"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recipes_categories", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recipes_ingredients", force: :cascade do |t|
-    t.integer  "recipe_id"
-    t.integer  "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
