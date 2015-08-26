@@ -13,4 +13,12 @@ describe 'create recipe path', {type: :feature} do
     click_button 'Submit'
     expect(page).to have_content 'Burrito'
   end
+
+  it 'allows user to view a specific recipe and its details ' do
+    @recipe = Recipe.create({name: 'Burrito'})
+    visit '/recipes'
+    click_link 'Burrito'
+    expect(page).to have_content 'Burrito'
+  end
+
 end

@@ -26,8 +26,8 @@ describe(Recipe) do
 
   describe('#validates') do
     it 'validates presence of name in name field' do
-      test_recipe = Recipe.create({:name => nil, :instruction => 'Microwave it'})
-      expect(test_recipe.name()).to(eq(nil))
+      test_recipe = Recipe.create({:name => "", :instruction => 'Microwave it'})
+      expect(test_recipe.save()).to(eq(false))
     end
   end
 end
