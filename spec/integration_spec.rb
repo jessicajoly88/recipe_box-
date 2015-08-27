@@ -24,7 +24,7 @@ describe 'create recipe path', {type: :feature} do
   it 'allows a user to delete a recipe' do
     recipe = Recipe.create({name: 'Burrito'})
     visit '/recipes'
-    click_link 'x'
+    click_button 'Delete'
     expect(page).not_to have_content 'Burrito'
   end
 

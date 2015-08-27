@@ -27,7 +27,7 @@ patch '/recipe/:id' do #NOT WORKING!!!!!!
 	erb(:recipe)
 end
 
-get '/delete/:id' do
+delete '/recipes/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.destroy()
 	redirect '/recipes'
