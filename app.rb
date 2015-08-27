@@ -21,7 +21,7 @@ get '/recipe/:id' do
 	erb(:recipe)
 end
 
-patch '/recipe/:id' do #NOT WORKING!!!!!!
+patch '/recipe/:id' do 
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.update({name: params['name']})
 	erb(:recipe)
