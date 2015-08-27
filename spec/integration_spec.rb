@@ -30,10 +30,10 @@ describe 'create recipe path', {type: :feature} do
 
   it 'allows a user to update a recipe'do
     recipe = Recipe.create({name: 'Burrito'})
-    visit '/recipe/#{recipe.id}'
-    fill_in 'update_recipe', with:"Enchiladas"
+    visit "/recipe/#{recipe.id()}"
+    fill_in 'name', with:"Enchiladas"
     click_button 'Update'
     expect(page).to have_content 'Enchiladas'
   end
-  
+
 end

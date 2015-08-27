@@ -2,8 +2,15 @@
 <div class="container">
 <% if Recipe.any? %>
   <% Recipe.all.each() do |recipe| %>
-    <ul>
-      <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name %>   </a><button class= "btn btn-xs btn-danger"><a href="/delete/<%= recipe.id %>" class='delete'>x</a></button></li>
+   <ul>
+      <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name %></a>
+        <form action="/recipes" method="post">
+          <div class='form-group'>
+            <input type="hidden" name="_method" value="delete">
+            <button class= "btn btn-danger btn-xs" type="submit">Delete</button>
+          </div>
+        </form>
+      </li>
     </ul>
   <% end %>
 

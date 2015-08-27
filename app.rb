@@ -22,10 +22,9 @@ get '/recipe/:id' do
 end
 
 patch '/recipe/:id' do #NOT WORKING!!!!!!
-	@recipe = Recipe.create({ name: params['name'] })
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.update({name: params['name']})
-	redirect '/recipe/#{@recipe.id}'
+	erb(:recipe)
 end
 
 get '/delete/:id' do
