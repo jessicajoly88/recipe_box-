@@ -41,6 +41,12 @@ post '/recipe/:id' do
 	erb(:recipe)
 end
 
+post '/recipe/:id/instruction' do
+	@recipe = Recipe.find(params['id'].to_i())
+	@instruction = @recipe.update({instruction: params['instruction']})
+	redirect "/recipe/#{@recipe.id}"
+end
+
 get '/recipe/:recipe_id/ingredient/:id' do
 	@recipe = Recipe.find(params['recipe_id'].to_i())
 	@ingredient = Ingredient.find(params['id'].to_i())

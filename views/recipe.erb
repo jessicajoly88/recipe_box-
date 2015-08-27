@@ -10,6 +10,11 @@
     <% end %>
   </ul>
 
+  <h4>Instructions:</h4>
+  <ul>
+    <%= @recipe.instruction %>
+  </ul>
+
   <form action="/recipe/<%= @recipe.id %>" method="post">
     <div class='form-group'>
       <input type="hidden" name="_method" value="patch">
@@ -26,6 +31,18 @@
       <input type="text" name="ingredient" class='form-control'><br>
       <button class= "btn btn-default"type="submit">Add</button>
     </div>
-    <button class= "btn btn-default"><a href="/">Back</a></button>
   </form>
+
+  <form action="/recipe/<%= @recipe.id %>/instruction" method="post">
+    <div class='form-group'>
+      <input type="hidden" name="_method" value="post">
+      <label for="instruction">Add Instructions</label>
+      <textarea class="form-control" name="instruction" rows="3"></textarea><br>
+      <button class= "btn btn-default"type="submit">Add</button>
+    </div>
+  </form>
+
+
+<br>
+<button class= "btn btn-default"><a href="/">Back</a></button>
 </div>
