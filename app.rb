@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+
 get '/'  do
 	erb(:index)
 end
@@ -11,7 +12,7 @@ get '/recipes' do
 	erb(:recipes)
 end
 
-post '/recipes' do
+post '/recipes/new' do
 	@recipe = Recipe.create({ name: params['name'] })
 	redirect '/recipes'
 end
@@ -21,7 +22,7 @@ get '/recipe/:id' do
 	erb(:recipe)
 end
 
-patch '/recipe/:id' do 
+patch '/recipe/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.update({name: params['name']})
 	erb(:recipe)
@@ -31,4 +32,10 @@ delete '/recipes/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
 	@recipe.destroy()
 	redirect '/recipes'
+end
+
+post '/recipe/:id' do
+	@recipe = Recipe.find(params['id'].to_i())
+	@recipe.ingredients.create({ name: params['ingredient']})
+	erb(:recipe)
 end

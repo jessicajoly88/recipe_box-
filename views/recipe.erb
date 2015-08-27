@@ -2,12 +2,28 @@
 <h1><%= @recipe.name %></h1>
 </center>
 
+<h4>Ingredients:</h4>
+<ul>
+  <% @recipe.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+
+
 <form action="/recipe/<%= @recipe.id %>" method="post">
   <div class='form-group'>
   <input type="hidden" name="_method" value="patch">
     <label for="name">Update Recipe Name</label>
     <input type="text" name="name" class='form-control'>
-  </div>
   <button type="submit">Update</button>
+  </div>
 </form>
-</div>
+
+<form action="/recipe/<%= @recipe.id %>" method="post">
+  <div class='form-group'>
+    <input type="hidden" name="_method" value="post">
+    <label for="ingredient">Add an Ingredient to this Recipe</label>
+    <input type="text" name="ingredient" class='form-control'>
+  <button type="submit">Add</button>
+  </div>
+</form>
