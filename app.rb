@@ -36,7 +36,8 @@ end
 
 post '/recipe/:id' do
 	@recipe = Recipe.find(params['id'].to_i())
-	@recipe.ingredients.create({ name: params['ingredient']})
+	@ingredient = Ingredient.find_or_create_by({ name: params['ingredient']})
+	@recipe.ingredients.push(@ingredient)
 	erb(:recipe)
 end
 
@@ -50,5 +51,10 @@ delete '/recipe/:recipe_id/ingredient/:id' do
 	@ingredient = Ingredient.find(params['id'].to_i())
 	@recipe = Recipe.find(params['recipe_id'].to_i())
 	@recipe.ingredients.destroy(@ingredient)
+	redirect "/recipe/#{@recipe.id}"
+end
+
+get '/recipe/:id/other' do
+	@recipe = Recipe.find(params['id'].to_i())
 	redirect "/recipe/#{@recipe.id}"
 end

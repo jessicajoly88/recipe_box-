@@ -1,22 +1,20 @@
-
 <div class="container">
-<% if Recipe.any? %>
-  <% Recipe.all.each() do |recipe| %>
-   <ul>
-      <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name %></a>
-        <form action="/recipes/<%= recipe.id() %>" method="post">
-          <div class='form-group'>
-            <input type="hidden" name="_method" value="delete">
-            <button class= "btn btn-danger btn-xs" type="submit">Delete</button>
-          </div>
-        </form>
-      </li>
-    </ul>
-  <% end %>
+  <% if Recipe.any? %>
+    <% Recipe.all.each() do |recipe| %>
+      <ul>
+        <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name %></a>
+            <form action="/recipes/<%= recipe.id() %>" method="post">
+            <div class='form-group'>
+              <input type="hidden" name="_method" value="delete">
+              <button class= "btn btn-danger btn-xs" type="submit">Delete</button>
+            </div>
+          </form>
+        </li>
+      </ul>
+    <% end %>
 
-  <% else %>
-    <h1>There are no recipes yet! </h1>
-  <% end %>
-
-  <button class= "btn btn-default"><a href="/">Back</a></button>
+    <% else %>
+      <h1>There are no recipes yet! </h1>
+    <% end %>
+    <button class= "btn btn-default"><a href="/">Back</a></button>
 </div>

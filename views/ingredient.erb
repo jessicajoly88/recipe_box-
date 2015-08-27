@@ -6,3 +6,11 @@
     <button class= "btn btn-danger btn-xs" type="submit">x</button>
   </div>
 </form></li>
+
+
+<h4>Other recipes with this ingredient:</h4>
+<ul>
+  <% @ingredient.recipes.each do |recipe| %>
+  <li><a href="/recipe/<%= recipe.id() %>/other"><%= recipe.name %></a></li>
+  <% end %>
+</ul>
