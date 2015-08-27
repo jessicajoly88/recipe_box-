@@ -1,0 +1,8 @@
+<h4><%= @ingredient.name%></h4>
+
+<form action="/recipe/ingredient/<%= @ingredient.id %>" method="post">
+  <div class='form-group'>
+    <input type="hidden" name="_method" value="delete">
+    <button class= "btn btn-danger btn-xs" type="submit">x</button>
+  </div>
+</form></li>

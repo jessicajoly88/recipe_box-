@@ -39,3 +39,15 @@ post '/recipe/:id' do
 	@recipe.ingredients.create({ name: params['ingredient']})
 	erb(:recipe)
 end
+
+get '/recipe/ingredient/:id' do
+	@ingredient = Ingredient.find(params['id'].to_i())
+	erb(:ingredient)
+end
+
+delete '/recipe/:id/ingredient/:id' do
+	@ingredient = Ingredient.find(params['id'].to_i())
+	@recipe = Recipe.find(params['id'].to_i())
+	@recipe.ingredients.destroy(@ingredient)
+	redirect "/recipe/#{@recipe.id}"
+end

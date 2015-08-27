@@ -5,10 +5,9 @@
 <h4>Ingredients:</h4>
 <ul>
   <% @recipe.ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
+  <li><a href="ingredient/<%= ingredient.id %>"><%= ingredient.name %></a></li>
   <% end %>
 </ul>
-
 
 <form action="/recipe/<%= @recipe.id %>" method="post">
   <div class='form-group'>
